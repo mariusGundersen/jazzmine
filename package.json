@@ -1,0 +1,21 @@
+{
+	"name": "jazzmine",
+	"description": "jassmine testsuite with support for async and require modules",
+	"keywords": ["jassmine", "async", "require", "mocking"],
+	"author": {
+		"name": "Marius Gundersen",
+		"email": "npm@mariusgundersen.net",
+		"url": "http://mariusgundersen.net"
+	},
+	"version": "0.1.0",
+	"devDependencies": {
+		"overloadjs": "latest",
+		"moquirejs": "latest",
+		"closurecompiler": "latest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/mariusgundersen/jazzmine"
+	}
+
+}

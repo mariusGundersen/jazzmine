@@ -1,0 +1,1 @@
+node_modules\.bin\ccjs.cmd node_modules\moquirejs\bin\moquire.min.js node_modules\overloadjs\lib\overload.min.js source\jazzmine.js --create_source_map=bin\jazzmine.min.js.map > bin\jazzmine.min.js
