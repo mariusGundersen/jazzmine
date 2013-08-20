@@ -1,0 +1,18 @@
+{
+	"name": "Jazzmine",
+	"version": "0.1.0",
+	"main": "bin/jazzmine.js",
+	"ignore": [
+		"**/.*",
+		"**/*.cmd",
+		"node_modules",
+		"bower_components",
+		"specs",
+		"tools"
+	],
+	"dependencies": {
+		"moquire.js": "latest",
+		"overload.js": "latest"
+	},
+	"_source": "git://github.com/mariusgundersen/jazzmine.git"
+}

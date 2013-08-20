@@ -1,4 +1,4 @@
-(function(){
+window.jazzmine = (function(){
 	var jasmine_describe = describe,
 		jasmine_it = it,
 		jasmine_beforeEach = beforeEach,
@@ -55,5 +55,17 @@
 		jasmine_it(description, runAsync(block))
 	};
 
+
+	var jazzmine = {};
+
+	jazzmine.requireConfig = function(config){
+		require.config(moquire.config(config));
+	}
+
+	jazzmine.onReady = function(then){
+		moquire.then(then);
+	}
+
+	return jazzmine;
 
 })();
