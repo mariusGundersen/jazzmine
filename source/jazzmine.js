@@ -4,8 +4,16 @@ window.jazzmine = (function(){
 		jasmine_beforeEach = beforeEach,
 		jasmine_afterEach = afterEach;
 
-	function mockTests(mocks, dependencies,name,method){
+	function mockTests(mocks, dependencies, name, method){
 		moquire(mocks, dependencies, function(){
+			var modules = arguments;
+			jasmine_describe(name, function(){
+				method.apply(this, modules);
+			});
+		});
+	}
+	function runTests(dependencies, name, method){
+		moquire(dependencies, function(){
 			var modules = arguments;
 			jasmine_describe(name, function(){
 				method.apply(this, modules);
@@ -16,11 +24,11 @@ window.jazzmine = (function(){
 	describe = overload([String, Function], function(name, method){
 		jasmine_describe(name, method);
 	}).when([Array, String, Function], function(dependencies, name, method){
-		mockTests({}, dependencies, name, method);
+		runTests(dependencies, name, method);
 	}).when([Object, Array, String, Function], function(mocks, dependencies, name, method){
 		mockTests(mocks, dependencies, name, method);
 	}).when([String, Array, Function], function(name, dependencies, method){
-		mockTests({}, dependencies, name, method);
+		runTests(dependencies, name, method);
 	}).when([String, Object, Array, Function], function(name, mocks, dependencies, method){
 		mockTests(mocks, dependencies, name, method);
 	});
