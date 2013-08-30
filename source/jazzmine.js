@@ -39,12 +39,13 @@ window.jazzmine = (function(){
 			return block;
 		}else{
 			return function(){
+				var self = this;
 				var isDone=false;
 				function done(){
 					isDone=true;
 				};
 				runs(function(){
-					block(done)
+					block.call(self, done)
 				});
 				waitsFor(function(){
 					return isDone
