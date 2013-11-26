@@ -1,21 +1,35 @@
 {
-	"name": "jazzmine",
-	"description": "jassmine testsuite with support for async and require modules",
-	"keywords": ["jassmine", "async", "require", "mocking"],
-	"author": {
-		"name": "Marius Gundersen",
-		"email": "npm@mariusgundersen.net",
-		"url": "http://mariusgundersen.net"
-	},
-	"version": "0.3.0",
-	"devDependencies": {
-		"overloadjs": "latest",
-		"moquirejs": "0.2.0",
-		"closurecompiler": "latest"
-	},
-	"repository": {
-		"type": "git",
-		"url": "http://github.com/mariusgundersen/jazzmine"
-	}
-
+  "name": "jazzmine",
+  "description": "jassmine testsuite with support for async and require modules",
+  "keywords": [
+    "jassmine",
+    "async",
+    "require",
+    "mocking"
+  ],
+  "author": {
+    "name": "Marius Gundersen",
+    "email": "npm@mariusgundersen.net",
+    "url": "http://mariusgundersen.net"
+  },
+  "version": "0.3.0",
+  "devDependencies": {
+    "overloadjs": "latest",
+    "moquirejs": "0.2.0",
+    "closurecompiler": "latest",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-script-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.3",
+    "requirejs": "~2.1.9",
+    "karma-requirejs": "~0.2.0",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma": "~0.10.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mariusgundersen/jazzmine"
+  }
 }
