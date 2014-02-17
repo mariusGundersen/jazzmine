@@ -65,11 +65,24 @@ window.jazzmine = (function(moquire, jasmine_describe, jasmine_it, jasmine_befor
 
 	jazzmine.requireConfig = function(config){
 		moquire.require.config(moquire.config(config));
-	}
+	};
 
 	jazzmine.onReady = function(then){
 		moquire.then(then);
-	}
+	};
+
+	jazzmine.addMatchers = overload([Function], function(addMatchers){
+		beforeEach(function(done){
+			addMatchers(function(matchers){
+				this.addMatchers(matchers);
+				done();
+			}.bind(this));
+		});
+	}).when([Object], function(matchers){
+		beforeEach(function(){
+			this.addMatchers(matchers);
+		});
+	});
 
 	return jazzmine;
 

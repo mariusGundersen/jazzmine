@@ -1,1 +1,1 @@
-node_modules\.bin\ccjs.cmd node_modules\moquirejs\bin\moquire.min.js source\pre-no-define.js node_modules\overloadjs\lib\overload.min.js source\post-no-define.js source\jazzmine.js --create_source_map=bin\jazzmine.min.js.map > bin\jazzmine.min.js
+node_modules\.bin\ccjs.cmd node_modules\moquirejs\bin\moquire.min.js source\pre-no-define.js node_modules\overloadjs\lib\overload.min.js source\post-no-define.js source\jazzmine.js source\toBeA.js --create_source_map=bin\jazzmine.min.js.map > bin\jazzmine.min.js
