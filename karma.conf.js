@@ -6,8 +6,8 @@ module.exports = function(config){
     ],
 
     files: [
-      'bin/jazzmine.min.js',
       'node_modules/requirejs/require.js',
+      'bin/jazzmine.min.js',
       'node_modules/karma-requirejs/lib/adapter.js',
 
       'test/specs-main.js',

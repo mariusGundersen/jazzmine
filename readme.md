@@ -18,6 +18,8 @@ describe("a test with dependencies", ["myLittleModule"], function(myLittleModue)
 
 This way you can load the module you want to test, and any other module needed for the test to run, right in the describe statement. 
 
+Jazzmine will wait until all of the dependencies have loaded before it runs the tests.
+
 ### because
 
 The `because` function is exactly the same as `beforeEach`. It is included as it works better with behaviour driven code; the `because` function describes what triggers what we want to test. For example:

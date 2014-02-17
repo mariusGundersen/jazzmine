@@ -1,8 +1,4 @@
-window.jazzmine = (function(){
-	var jasmine_describe = describe,
-		jasmine_it = it,
-		jasmine_beforeEach = beforeEach,
-		jasmine_afterEach = afterEach;
+window.jazzmine = (function(moquire, jasmine_describe, jasmine_it, jasmine_beforeEach, jasmine_afterEach){
 
 	function mockTests(mocks, dependencies, name, method){
 		moquire(mocks, dependencies, function(){
@@ -13,7 +9,7 @@ window.jazzmine = (function(){
 		});
 	}
 	function runTests(dependencies, name, method){
-		moquire(dependencies, function(){
+		moquire({}, dependencies, function(){
 			var modules = arguments;
 			jasmine_describe(name, function(){
 				method.apply(this, modules);
@@ -24,11 +20,11 @@ window.jazzmine = (function(){
 	describe = overload([String, Function], function(name, method){
 		jasmine_describe(name, method);
 	}).when([Array, String, Function], function(dependencies, name, method){
-		runTests(dependencies, name, method);
+		mockTests({}, dependencies, name, method);
 	}).when([Object, Array, String, Function], function(mocks, dependencies, name, method){
 		mockTests(mocks, dependencies, name, method);
 	}).when([String, Array, Function], function(name, dependencies, method){
-		runTests(dependencies, name, method);
+		mockTests({}, dependencies, name, method);
 	}).when([String, Object, Array, Function], function(name, mocks, dependencies, method){
 		mockTests(mocks, dependencies, name, method);
 	});
@@ -68,7 +64,7 @@ window.jazzmine = (function(){
 	var jazzmine = {};
 
 	jazzmine.requireConfig = function(config){
-		require.config(moquire.config(config));
+		moquire.require.config(moquire.config(config));
 	}
 
 	jazzmine.onReady = function(then){
@@ -77,4 +73,4 @@ window.jazzmine = (function(){
 
 	return jazzmine;
 
-})();
+})(moquire, describe, it, beforeEach, afterEach);

@@ -4,8 +4,8 @@ jazzmine.requireConfig({
   baseUrl: '/base',
 
   paths: {
-    "Mocks": "Specs/Mocks",
-    "Given": "Specs/Given",
+    "Mocks": "test/Mocks",
+    "Given": "test/Given",
   }
 });
 
