@@ -12,10 +12,10 @@
     "email": "npm@mariusgundersen.net",
     "url": "http://mariusgundersen.net"
   },
-  "version": "0.4.0",
+  "version": "0.4.1",
   "devDependencies": {
     "overloadjs": "latest",
-    "moquirejs": "0.3.0",
+    "moquirejs": "0.3.1",
     "closurecompiler": "latest",
     "karma-firefox-launcher": "~0.1.0",
     "karma-chrome-launcher": "~0.1.0",
