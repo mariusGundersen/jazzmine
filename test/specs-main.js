@@ -11,15 +11,18 @@ jazzmine.requireConfig({
 
 jazzmine.addMatchers({
   toBeSomething: function(){
+    return {
+      compare: function(actual){
+        var result = actual === "something";
+        var notText = result ? " not" : "";
 
-    var actual = this.actual;
-    var notText = this.isNot ? " not" : "";
 
-    this.message = function(){
-      return "expected " + actual + notText + " to be something";
+        return {
+          pass: result,
+          message: "expected " + actual + notText + " to be something"
+        };
+      }
     };
-
-    return actual === "something";
   }
 });
 
@@ -27,15 +30,18 @@ jazzmine.addMatchers(function(matchers){
   setTimeout(function(){
     matchers({
       toBeSomethingElse: function(){
+        return {
+          compare: function(actual){
+            var result = actual === "something else";
+            var notText = result ? " not" : "";
 
-        var actual = this.actual;
-        var notText = this.isNot ? " not" : "";
 
-        this.message = function(){
-          return "expected " + actual + notText + " to be something else";
+            return {
+              pass: result,
+              message: "expected " + actual + notText + " to be something else"
+            };
+          }
         };
-
-        return actual === "something else";
       }
     });
   }, 100);

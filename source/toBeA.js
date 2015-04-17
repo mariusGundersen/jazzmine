@@ -15,27 +15,30 @@
     }
   }
 
-  function toBeA(aOrAn, type){
-    var actual = typeOf(this.actual);
-    var notText = this.isNot ? " not" : "";
+  function toBeA(aOrAn, actual, type){
+    var actual = typeOf(actual);
     var expected = functionName(type);
 
-    this.message = function(){
-      return "expected " + actual + notText + " to be " + aOrAn + expected;
-    }
+    var result = actual === expected;
+    var notText = result ? " not" : "";
 
-    return actual === expected;
+    return {
+      pass: result,
+      message: "expected " + actual + notText + " to be " + aOrAn + expected
+    };
   }
 
-  beforeEach(function(){
-    this.addMatchers({
-      toBeA: function(type){
-        return toBeA.call(this, "a ", type)
-      },
-      toBeAn: function(type){
-        return toBeA.call(this, "an ", type)
-      }
-    });
+  jazzmine.addMatchers({
+    toBeA: function(util, customEqualityTesters){
+      return {
+        compare: toBeA.bind(this, "a ")
+      };
+    },
+    toBeAn: function(util, customEqualityTesters){
+      return {
+        compare: toBeA.bind(this, "an ")
+      };
+    }
   });
 
 })();
