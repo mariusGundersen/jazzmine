@@ -12,7 +12,7 @@
     "email": "npm@mariusgundersen.net",
     "url": "http://mariusgundersen.net"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "overloadjs": "latest",
     "moquirejs": "0.3.1",
