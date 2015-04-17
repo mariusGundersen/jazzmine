@@ -114,24 +114,11 @@ jazzmine.addMatchers({
 });
 
 jazzmine.addMatchers(function(matchers){
-  setTimeout(function(){
+  require(['Matchers/toBeSomethingElse'], function(toBeSomethingElse){
     matchers({
-      toBeSomethingElse: function(){
-        return {
-          compare: function(actual){
-            var result = actual === "something else";
-            var notText = result ? " not" : "";
-
-
-            return {
-              pass: result,
-              message: "expected " + actual + notText + " to be something else"
-            };
-          }
-        };
-      }
+      toBeSomethingElse: toBeSomethingElse
     });
-  }, 100);
+  });
 });
 ```
 
@@ -162,6 +149,7 @@ module.exports = function(config){
       'test/specs-main.js',
       {pattern: 'source/**/*.js', included: false},
       {pattern: 'test/Mocks/**/*.js', included: false},
+      {pattern: 'test/Matchers/**/*.js', included: false},
       {pattern: 'test/Given/**/*.js', included: false},
       'test/Modules/**/*.js'
     ],
@@ -186,8 +174,9 @@ jazzmine.requireConfig({
   baseUrl: '/base',
 
   paths: {
-    "Mocks": "Specs/Mocks",
-    "Given": "Specs/Given",
+    "Mocks": "test/Mocks",
+    "Given": "test/Given",
+    "Matchers": "test/Matchers",
   }
 });
 
