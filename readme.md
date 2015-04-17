@@ -2,6 +2,15 @@
 
 Jazzmine is an addition to Jasmine, adding and modifying it to work nicer with AMD modules and async code. 
 
+
+## Installation
+
+Install Jazzmine using npm
+
+```
+npm install jazzmine
+```
+
 ### Module loading
 
 Jazzmine is made to test individual AMD modules. This is done by loading the model, and any other dependency, right in the `describe`. For example:
@@ -42,7 +51,7 @@ describe("when a variable is set", [], function(){
 
 ### Async tests
 
-Jasmine has horrible support for async testing. Jazzmine makes things bearable by using the async strategy of the [jasmine.async](https://github.com/derickbailey/jasmine.async) library. The `beforeEach`, `afterEach`, `because` and `it` functions support async by using a done paramete, like so:
+~~Jasmine has horrible support for async testing~~. Jasmine has adopted the same async support as Jazzmine has had, so continue using it like you always have. The `beforeEach`, `afterEach`, `because` and `it` functions support async by using a done parameter, like so:
 
 ```javascript
 it("should wait until the done function is called", function(done){
@@ -82,12 +91,48 @@ describe("mock out a dependency", {
 });
 ```
 
-## Installation
+## Global matchers
 
-Install Jazzmine using npm
+Matchers can be added to every test by calling `jazzmine.addMatchers()`. This method can either take an object of matchers, similar to Jasmine, or it can take a function with a callback for async registering matchers. These functions should be called before calling `jazzmine.onReady()`.
 
-```
-npm install jazzmine
+```js
+jazzmine.addMatchers({
+  toBeSomething: function(){
+    return {
+      compare: function(actual){
+        var result = actual === "something";
+        var notText = result ? " not" : "";
+
+
+        return {
+          pass: result,
+          message: "expected " + actual + notText + " to be something"
+        };
+      }
+    };
+  }
+});
+
+jazzmine.addMatchers(function(matchers){
+  setTimeout(function(){
+    matchers({
+      toBeSomethingElse: function(){
+        return {
+          compare: function(actual){
+            var result = actual === "something else";
+            var notText = result ? " not" : "";
+
+
+            return {
+              pass: result,
+              message: "expected " + actual + notText + " to be something else"
+            };
+          }
+        };
+      }
+    });
+  }, 100);
+});
 ```
 
 ## Setup with Karma
@@ -109,8 +154,8 @@ module.exports = function(config){
     ],
 
     files: [
-      'node_modules/jazzmine/bin/jazzmine.min.js',
       'node_modules/requirejs/require.js',
+      'node_modules/jazzmine/bin/jazzmine.min.js',
       'node_modules/karma-requirejs/lib/adapter.js',
       //add other libraries needed for testing here (for example sinon)
 
