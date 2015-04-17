@@ -13,6 +13,7 @@ module.exports = function(config){
       'test/specs-main.js',
       {pattern: 'source/**/*.js', included: false},
       {pattern: 'test/Mocks/**/*.js', included: false},
+      {pattern: 'test/Matchers/**/*.js', included: false},
       {pattern: 'test/Given/**/*.js', included: false},
       'test/Modules/**/*.js'
     ],

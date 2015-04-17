@@ -6,6 +6,7 @@ jazzmine.requireConfig({
   paths: {
     "Mocks": "test/Mocks",
     "Given": "test/Given",
+    "Matchers": "test/Matchers"
   }
 });
 
@@ -27,24 +28,11 @@ jazzmine.addMatchers({
 });
 
 jazzmine.addMatchers(function(matchers){
-  setTimeout(function(){
+  require(['Matchers/toBeSomethingElse'], function(toBeSomethingElse){
     matchers({
-      toBeSomethingElse: function(){
-        return {
-          compare: function(actual){
-            var result = actual === "something else";
-            var notText = result ? " not" : "";
-
-
-            return {
-              pass: result,
-              message: "expected " + actual + notText + " to be something else"
-            };
-          }
-        };
-      }
+      toBeSomethingElse: toBeSomethingElse
     });
-  }, 100);
+  });
 });
 
 jazzmine.onReady(window.__karma__.start);
