@@ -1,4 +1,12 @@
-(function(exports, moquire, jasmine_it, jasmine_describe, jasmine_beforeEach, jasmine_afterEach){
+(function(
+  exports,
+  moquire,
+  jasmine_it,
+  jasmine_xit,
+  jasmine_fit,
+  jasmine_describe,
+  jasmine_beforeEach,
+  jasmine_afterEach){
 
   function mockTests(mocks, dependencies, name, method){
     moquire(mocks, dependencies, function(){
@@ -83,8 +91,18 @@
   exports.jazzmine = jazzmine;
   exports.describe = describe;
   exports.it = asyncPromiseIt.bind(null, jasmine_it);
+  exports.xit = asyncPromiseIt.bind(null, jasmine_xit);
+  exports.fit = asyncPromiseIt.bind(null, jasmine_fit);
   exports.beforeEach = asyncPromiseRun.bind(null, jasmine_beforeEach);
   exports.afterEach = asyncPromiseRun.bind(null, jasmine_afterEach);
   exports.because = asyncPromiseRun.bind(null, jasmine_beforeEach);
 
-})(window, moquire, it, describe, beforeEach, afterEach);
+})(
+  window,
+  moquire,
+  it,
+  xit,
+  fit,
+  describe,
+  beforeEach,
+  afterEach);
