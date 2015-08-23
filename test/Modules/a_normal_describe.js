@@ -1,6 +1,3 @@
-
-
-
 //notice the empty array here!
 describe("a normal describe", [], function(){
   
